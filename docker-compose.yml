@@ -1,0 +1,38 @@
+# version: "3"
+
+services:
+  db:
+    image: mariadb:10.6.17
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123!
+      MYSQL_USER: fauser
+      MYSQL_PASSWORD: abc123!
+      MYSQL_DATABASE: fastapi
+    ports:
+    - 3306:3306
+    volumes:
+    - md_data:/var/lib/mysql
+    - ./db:/docker-entrypoint-initdb.d
+
+  web:
+    image: zzyzzy/fawebapp
+    build: web
+    ports:
+      - 8000:8000
+    environment:
+      DB_HOST: db
+      DB_USER: fauser
+      DB_PASSWORD: abc123!
+      DB_NAME: fastapi
+    depends_on:
+      - db
+
+  nginx:
+    build: nginx
+    ports:
+      - 80:80
+    depends_on:
+      - web        
+
+volumes:
+  md_data:      
