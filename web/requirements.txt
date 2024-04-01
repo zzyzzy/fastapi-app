@@ -2,3 +2,4 @@ fastapi
 pymysql
 sqlalchemy
 pydantic
+prometheus-fastapi-instrumentator
