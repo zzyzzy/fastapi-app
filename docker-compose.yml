@@ -19,8 +19,8 @@ services:
     ports:
       - 9104:9104
     environment:
-      - DATA_SOURCE_NAME: "root:abc123!@(db:3306)/fastapi"
-      - READ_CONFIG_FILE: "false"
+      DATA_SOURCE_NAME: root:abc123!@(db:3306)/fastapi
+      READ_CONFIG_FILE: false"
     depends_on:
       - db      
 
