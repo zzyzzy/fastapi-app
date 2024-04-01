@@ -18,11 +18,11 @@ services:
     image: quay.io/prometheus/mysqld-exporter
     ports:
       - 9104:9104
-    #environment:
-    #  - DATA_SOURCE_NAME=root:abc123!@(db:3306)/
-    command:
-     - -mysqld.username=root:abc123!
-     - -mysqld.address=db:3306 
+    environment:
+      - DATA_SOURCE_NAME=root:abc123!@(db:3306)/
+    #command:
+    # - -mysqld.username=root:abc123!
+    # - -mysqld.address=db:3306 
     links:
       - db
     depends_on:
