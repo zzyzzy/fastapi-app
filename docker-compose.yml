@@ -20,6 +20,7 @@ services:
       - 9104:9104
     #environment:
       # DATA_SOURCE_NAME: root:abc123!@(db:3306)/fastapi # 옛날버젼
+    container_name: mysqld-exporter      
     command:
       - "-mysqld.username=root:abc123!"
       - "-mysqld.address=db:3306"      
